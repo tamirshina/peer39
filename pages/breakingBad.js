@@ -2,8 +2,10 @@ import Episode from '../components/episodeComponent'
 import { groupBySeason } from '../utilities/util'
 import api from '../api/config'
 
+//Main page, gets all episodes and lists them by season. defualt behavior was overriden in next.config.
 export default function Episodes({ episodes }) {
 
+    //Divide episodes by season.
     const arryOfSeasons = groupBySeason(episodes)
 
     return (
@@ -26,7 +28,8 @@ export default function Episodes({ episodes }) {
         </main>
     )
 }
-
+//Next will fetch and generate this page at build time! meaning two things - one- fast loading for the client. two- better SEO. 
+//If page isn't found redirect to 404
 export async function getStaticProps() {
     const res = await fetch(api.paths.baseUrl + api.paths.allEpisodes)
     const episodes = await res.json()

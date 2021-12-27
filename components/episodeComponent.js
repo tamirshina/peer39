@@ -1,7 +1,7 @@
 
 import Link from 'next/link'
 import Properties from './properties'
-
+//component to build each episode card.
 export default function EpisodeComponent({ episode_id, title, air_date, characters }) {
     return (
         <li key={episode_id}>

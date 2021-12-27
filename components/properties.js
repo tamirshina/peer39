@@ -1,3 +1,4 @@
+//component for readability.
 export default function Properties({ title, air_date }) {
     return (
         <>

@@ -1,17 +1,9 @@
-
-
-import { useRouter } from 'next/router'
 import EpisodeData from '../../components/episodeData'
-import Loader from '../../utilities/Loader'
 import api from '../../api/config'
 
+//Episode page gets it's id from the next router. Data is fetch during build time using getStaticPaths.
 export default function Episode({ episode }) {
 
-
-    const router = useRouter();
-
-    if (router.isFallback) return <Loader />
-    if (!episode) return null
     return <EpisodeData {...episode} />
 
 }
@@ -30,6 +22,7 @@ export async function getStaticProps(context) {
         revalidate: 1
     }
 }
+//We give Next all the possible paths for episodes. Next will get them at buid time.
 export async function getStaticPaths() {
 
     const res = await fetch(api.paths.baseUrl + api.paths.allEpisodes)

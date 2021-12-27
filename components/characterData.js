@@ -1,4 +1,4 @@
-
+//Component to render character data.
 export default function characterData(data) {
     const { name, birthday, nickname, img, status, occupation } = data[0]
     return (
