@@ -1,6 +1,5 @@
 
 export default function characterData(data) {
-
     const { name, birthday, nickname, img, status, occupation } = data[0]
     return (
         <div key={name} className="flex justify-around">

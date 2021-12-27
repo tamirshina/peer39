@@ -1,5 +1,5 @@
-import Properties from '../../components/properties'
-import Character from '../../components/character'
+import Properties from './properties'
+import Character from './character'
 
 export default function EpisodeData(data) {
 
@@ -14,7 +14,7 @@ rounded-lg hover:border-4 border-stone-300">
                 {
                     characters.map((character, index) => {
 
-                        return <Character index={index} character={character} />
+                        return <Character key ={index} index={index} character={character} />
                     })
                 }
             </div>

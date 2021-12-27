@@ -2,31 +2,28 @@ import Episode from '../components/episodeComponent'
 import { groupBySeason } from '../utilities/util'
 import api from '../api/config'
 
-function Episodes({ episodes }) {
+export default function Episodes({ episodes }) {
 
     const arryOfSeasons = groupBySeason(episodes)
 
     return (
-        <>
-            <div>
-                <h1 className="m-4" >Breakin Bad Episodes</h1>
-            </div>
-            {arryOfSeasons.map((arrayOfEpisodes, index) => {
-                return (
-                    <div key={index}>
-                        <h2 className="m-4">Season {index + 1}</h2>
-
-                        <main className="min-h-full flex grow flex-wrap">
-
-                            {arrayOfEpisodes.map((data, index) => {
-
-                                return <Episode key={index} {...data} />
-                            })}
-                        </main>
-                    </div>
-                )
-            })}
-        </>
+        <main>
+            <h1 className="m-4" >Breakin Bad Episodes</h1>
+            <ul>
+                {arryOfSeasons.map((arrayOfEpisodes, index) => {
+                    return (
+                        <li key={index}>
+                            <h2 className="m-4">Season {index + 1}</h2>
+                            <ul className="min-h-full flex grow flex-wrap">
+                                {arrayOfEpisodes.map((data, index) => {
+                                    return <Episode key={index} {...data} />
+                                })}
+                            </ul>
+                        </li>
+                    )
+                })}
+            </ul>
+        </main>
     )
 }
 
@@ -44,4 +41,3 @@ export async function getStaticProps() {
         props: { episodes },
     }
 }
-export default Episodes;
